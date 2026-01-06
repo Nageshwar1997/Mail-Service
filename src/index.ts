@@ -13,7 +13,7 @@ app.get("/", (_req, res) => {
 });
 
 app.get("/verify-connection", verifyConnectionController);
-app.get("/send-otp", sendOtpController);
+app.post("/send-otp", sendOtpController);
 
 (async () => {
   if (IS_DEV) {
