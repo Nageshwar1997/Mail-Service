@@ -4,6 +4,13 @@ const app: Application = express();
 
 app.use(express.json());
 
+app.get("/", (_req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Server is ready 🚀",
+  });
+});
+
 app.get("/health", (_req, res) => {
   res.status(200).json({
     success: true,
