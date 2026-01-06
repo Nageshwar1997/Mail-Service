@@ -9,21 +9,15 @@ import { MAIL_FROM } from "../envs";
 
 class EmailService {
   private transporter;
-  private isConnected = false;
 
   constructor() {
     this.transporter = transporterConfig;
-
-    if (!this.isConnected) {
-      this.verifyConnection();
-    }
   }
 
   // Test connection
   public async verifyConnection() {
     try {
       await this.transporter.verify();
-      this.isConnected = true;
       console.log("📪 Email server ready");
     } catch (err) {
       console.error("❌ Email server connection failed", err);
