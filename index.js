@@ -1,7 +1,7 @@
-import express, { Application } from "express";
-import { transporter } from "./services";
+const express = require("express");
+const transporter = require("./src/services");
 
-const app: Application = express();
+const app = express();
 
 app.use(express.json());
 
@@ -32,4 +32,4 @@ app.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-export { app };
+module.exports = app;

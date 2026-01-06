@@ -1,10 +1,10 @@
-import nodemailer from "nodemailer";
-import { convert } from "html-to-text";
-import {
-  getNewPasswordHtmlMessage,
+const nodemailer = require("nodemailer");
+const { convert } = require("html-to-text");
+const {
   getOtpHtmlMessage,
   getPasswordResetHtmlMessage,
-} from "../helpers";
+  getNewPasswordHtmlMessage,
+} = require("../helpers");
 
 const transporterConfig = nodemailer.createTransport({
   host: "smtp.mandrillapp.com",
@@ -19,14 +19,12 @@ const transporterConfig = nodemailer.createTransport({
 });
 
 class EmailService {
-  private transporter;
-
   constructor() {
     this.transporter = transporterConfig;
   }
 
   // Test connection
-  public async verifyConnection() {
+  async verifyConnection() {
     try {
       await this.transporter.verify();
       console.log("📪 Email server ready");
@@ -36,17 +34,13 @@ class EmailService {
   }
 
   // Generic send email
-  public async sendMail(options: {
-    to: string;
-    subject: string;
-    htmlOrText: string;
-  }) {
-    // const htmlToText =
+  async sendMail(options) {
     const text = convert(options.htmlOrText, {
       wordwrap: 130,
     });
+
     return this.transporter.sendMail({
-      from: `Beautinique <auth@ctruh.com>`,
+      from: "Beautinique <auth@ctruh.com>",
       to: options.to,
       subject: options.subject,
       text,
@@ -55,21 +49,27 @@ class EmailService {
   }
 
   // OTP Email
-  public async sendOtpEmail(to: string, otp: string) {
+  async sendOtpEmail(to, otp) {
     const html = getOtpHtmlMessage("OTP Verification", otp);
-    await this.sendMail({ to, subject: "Your OTP Code 🔑", htmlOrText: html });
+    await this.sendMail({
+      to,
+      subject: "Your OTP Code 🔑",
+      htmlOrText: html,
+    });
   }
+
   // Password Reset Email
-  public async sendPasswordResetEmail(to: string, resetLink: string) {
+  async sendPasswordResetEmail(to, resetLink) {
     const html = getPasswordResetHtmlMessage("Password Reset", resetLink);
-    await this.sendMail({ to, subject: "Password Reset", htmlOrText: html });
+    await this.sendMail({
+      to,
+      subject: "Password Reset",
+      htmlOrText: html,
+    });
   }
+
   // New Password Email
-  public async sendNewPasswordEmail(
-    to: string,
-    password: string,
-    link: string
-  ) {
+  async sendNewPasswordEmail(to, password, link) {
     const html = getNewPasswordHtmlMessage("New Password", password, link);
     await this.sendMail({
       to,
@@ -79,11 +79,12 @@ class EmailService {
   }
 
   // Order Confirmation Example
-  public async sendOrderEmail(to: string, orderId: string) {
+  async sendOrderEmail(to, orderId) {
     const html = `
       <h2>Order Confirmed 🎉</h2>
       <p>Your order <b>#${orderId}</b> has been placed successfully.</p>
     `;
+
     await this.sendMail({
       to,
       subject: "Order Confirmation ✅",
@@ -92,4 +93,4 @@ class EmailService {
   }
 }
 
-export const transporter = new EmailService();
+module.exports = new EmailService();
