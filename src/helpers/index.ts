@@ -1,4 +1,4 @@
-const getOtpHtmlMessage = (title, otp) => {
+export const getOtpHtmlMessage = (title: string, otp: string) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -30,7 +30,10 @@ const getOtpHtmlMessage = (title, otp) => {
   `;
 };
 
-const getPasswordResetHtmlMessage = (title, resetLink) => {
+export const getPasswordResetHtmlMessage = (
+  title: string,
+  resetLink: string
+) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -81,7 +84,11 @@ const getPasswordResetHtmlMessage = (title, resetLink) => {
   `;
 };
 
-const getNewPasswordHtmlMessage = (title, password, link) => {
+export const getNewPasswordHtmlMessage = (
+  title: string,
+  password: string,
+  link: string
+) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -136,10 +143,4 @@ const getNewPasswordHtmlMessage = (title, password, link) => {
     </body>
     </html>
   `;
-};
-
-module.exports = {
-  getOtpHtmlMessage,
-  getPasswordResetHtmlMessage,
-  getNewPasswordHtmlMessage,
 };
