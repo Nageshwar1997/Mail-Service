@@ -1,0 +1,35 @@
+{
+  "name": "mail-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dis/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon --exec node -r ts-node/register src/index.ts",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nageshwar1997/Mail-Service.git"
+  },
+  "keywords": [],
+  "author": "Nageshwar",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Nageshwar1997/Mail-Service/issues"
+  },
+  "homepage": "https://github.com/Nageshwar1997/Mail-Service#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  }
+}
