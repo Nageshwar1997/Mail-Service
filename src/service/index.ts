@@ -19,9 +19,10 @@ class EmailService {
   }
 
   // Test connection
-  private async verifyConnection() {
+  public async verifyConnection() {
     try {
       await this.transporter.verify();
+      this.isConnected = true;
       console.log("📪 Email server ready");
     } catch (err) {
       console.error("❌ Email server connection failed", err);

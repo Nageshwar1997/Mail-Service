@@ -1,14 +1,33 @@
 import express from "express";
 import "dotenv/config";
+import { IS_DEV, PORT } from "./envs";
+import { transporter } from "./service";
+import { verifyConnectionController } from "./controllers/verifyConnection";
 
 const app = express();
 app.use(express.json());
 
 app.get("/", (_req, res) => {
-  res.send("Hello World!");
-});
-app.get("/test", (_req, res) => {
-  res.send("Hello test!");
+  res.status(200).send("Mail Service is ready to go!");
 });
 
-export default app; // Vercel will wrap this as a serverless function
+app.get("/verify-connection", verifyConnectionController);
+
+(async () => {
+  if (IS_DEV) {
+    try {
+      await transporter.verifyConnection();
+
+      app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+      });
+    } catch (err) {
+      console.error("❌ Failed to start server:", err);
+      process.exit(1);
+    }
+  } else {
+    console.log(`Application is running`);
+  }
+})();
+
+export default app;
