@@ -1,13 +1,11 @@
 import nodemailer from "nodemailer";
+import { MAIL_PORT, MAIL_HOST, MAIL_PASS, MAIL_USER } from "../envs";
 
-const transporterConfig = nodemailer.createTransport({
-  host: "smtp.mandrillapp.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: "Ctruh",
-    pass: "md-Ap3l4MhOpE1qZyxD70f81g",
-  },
+export const transporterConfig = nodemailer.createTransport({
+  host: MAIL_HOST,
+  port: Number(MAIL_PORT),
+  secure: false,
+  auth: { user: MAIL_USER, pass: MAIL_PASS },
 });
 
 export default transporterConfig;

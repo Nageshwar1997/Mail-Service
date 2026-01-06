@@ -1,1 +1,15 @@
-export const { PORT, IS_DEV } = process.env;
+export const {
+  // A
+  PORT,
+  IS_DEV,
+
+  MAIL_PORT,
+  MAIL_HOST,
+  CTRUH_MAIL_HOST,
+  MAIL_USER,
+  CTRUH_MAIL_USER,
+  MAIL_PASS,
+  CTRUH_MAIL_PASS,
+  MAIL_FROM,
+  CTRUH_MAIL_FROM,
+} = process.env;

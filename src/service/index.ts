@@ -5,6 +5,7 @@ import {
   getOtpHtmlMessage,
   getPasswordResetHtmlMessage,
 } from "../helpers";
+import { MAIL_FROM } from "../envs";
 
 class EmailService {
   private transporter;
@@ -36,11 +37,10 @@ class EmailService {
     htmlOrText: string;
   }) {
     // const htmlToText =
-    const text = convert(options.htmlOrText, {
-      wordwrap: 130,
-    });
+    const text = convert(options.htmlOrText, { wordwrap: 130 });
+
     return this.transporter.sendMail({
-      from: `Beautinique <auth@ctruh.com>`,
+      from: `Beautinique <${MAIL_FROM}>`,
       to: options.to,
       subject: options.subject,
       text,
@@ -49,7 +49,7 @@ class EmailService {
   }
 
   // OTP Email
-  public async sendOtpEmail(to: string, otp: string) {
+  public async sendOtp(to: string, otp: string) {
     const html = getOtpHtmlMessage("OTP Verification", otp);
     await this.sendMail({ to, subject: "Your OTP Code 🔑", htmlOrText: html });
   }

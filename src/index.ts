@@ -3,6 +3,7 @@ import "dotenv/config";
 import { IS_DEV, PORT } from "./envs";
 import { transporter } from "./service";
 import { verifyConnectionController } from "./controllers/verifyConnection";
+import { sendOtpController } from "./controllers/sendOtpController";
 
 const app = express();
 app.use(express.json());
@@ -12,6 +13,7 @@ app.get("/", (_req, res) => {
 });
 
 app.get("/verify-connection", verifyConnectionController);
+app.get("/send-otp", sendOtpController);
 
 (async () => {
   if (IS_DEV) {
