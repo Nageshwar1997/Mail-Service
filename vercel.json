@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "bq-backend",
+  "name": "mail-service",
   "builds": [
     {
       "src": "dist/index.js",
