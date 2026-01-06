@@ -1,3 +1,14 @@
+export const getCatchErrorMessage = (
+  error: unknown,
+  defaultMessage?: string
+) => {
+  return typeof error === "string"
+    ? error
+    : error instanceof Error
+    ? error.message
+    : defaultMessage ?? "Something went wrong";
+};
+
 export const getOtpHtmlMessage = (title: string, otp: string) => {
   return `
     <!DOCTYPE html>

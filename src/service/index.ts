@@ -47,36 +47,15 @@ class EmailService {
     const html = getOtpHtmlMessage("OTP Verification", otp);
     await this.sendMail({ to, subject: "Your OTP Code 🔑", htmlOrText: html });
   }
-  // Password Reset Email
-  public async sendPasswordResetEmail(to: string, resetLink: string) {
+  // Password Reset Link Email
+  public async sendPasswordResetLink(to: string, resetLink: string) {
     const html = getPasswordResetHtmlMessage("Password Reset", resetLink);
-    await this.sendMail({ to, subject: "Password Reset", htmlOrText: html });
+    await this.sendMail({ to, subject: "Reset Password", htmlOrText: html });
   }
   // New Password Email
-  public async sendNewPasswordEmail(
-    to: string,
-    password: string,
-    link: string
-  ) {
+  public async sendNewPassword(to: string, password: string, link: string) {
     const html = getNewPasswordHtmlMessage("New Password", password, link);
-    await this.sendMail({
-      to,
-      subject: "New Password",
-      htmlOrText: html,
-    });
-  }
-
-  // Order Confirmation Example
-  public async sendOrderEmail(to: string, orderId: string) {
-    const html = `
-      <h2>Order Confirmed 🎉</h2>
-      <p>Your order <b>#${orderId}</b> has been placed successfully.</p>
-    `;
-    await this.sendMail({
-      to,
-      subject: "Order Confirmation ✅",
-      htmlOrText: html,
-    });
+    await this.sendMail({ to, subject: "New Password", htmlOrText: html });
   }
 }
 
