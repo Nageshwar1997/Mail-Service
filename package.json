@@ -1,18 +1,23 @@
 {
   "name": "mail-service",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Mail sending microservice with Node.js, Express, and Nodemailer",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js",
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Nageshwar1997/Mail-Service.git"
   },
-  "keywords": [],
+  "keywords": [
+    "mail",
+    "email",
+    "nodemailer",
+    "express"
+  ],
   "author": "Nageshwar",
   "license": "ISC",
   "type": "commonjs",
@@ -20,11 +25,16 @@
     "url": "https://github.com/Nageshwar1997/Mail-Service/issues"
   },
   "homepage": "https://github.com/Nageshwar1997/Mail-Service#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "html-to-text": "^9.0.5",
-    "nodemailer": "^7.0.12",
+    "nodemailer": "^7.0.12"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.11"
   }
 }
