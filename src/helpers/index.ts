@@ -95,11 +95,7 @@ export const getPasswordResetHtmlMessage = (
   `;
 };
 
-export const getNewPasswordHtmlMessage = (
-  title: string,
-  password: string,
-  link: string
-) => {
+export const getForgotPasswordHtmlMessage = (title: string, link: string) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -118,20 +114,14 @@ export const getNewPasswordHtmlMessage = (
                 <td>
                   <h1 style="margin-bottom:12px; color:#222;">${title}</h1>
                   <p style="color:#555; font-size:15px; margin-bottom:24px;">
-                    Use the following password to login to your account. Once logged in, you can change your password in the <strong>Profile</strong> section.
+                    Click the button below to set your password. This link will expire in <strong>60 minutes</strong>.
                   </p>
-                  <h2
-                    style="
-                      margin:12px;
-                      font-weight:700;
-                    ">
-                    ${password}
-                  </h2>
 
+                  <!-- Button -->
                   <a href="${link}" target="_blank"
                     style="
                       display:inline-block;
-                      padding:12px 32px;
+                      padding:16px 32px;
                       background:#9747ff;
                       color:#ffffff;
                       text-decoration:none;
@@ -139,7 +129,7 @@ export const getNewPasswordHtmlMessage = (
                       font-size:16px;
                       font-weight:600;
                     ">
-                    Login
+                    Set New Password
                   </a>
 
                   <p style="margin-top:24px; font-size:12px; color:#999;">

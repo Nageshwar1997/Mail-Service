@@ -1,7 +1,7 @@
 import { convert } from "html-to-text";
 import transporterConfig from "../configs";
 import {
-  getNewPasswordHtmlMessage,
+  getForgotPasswordHtmlMessage,
   getOtpHtmlMessage,
   getPasswordResetHtmlMessage,
 } from "../helpers";
@@ -49,13 +49,13 @@ class EmailService {
   }
   // Password Reset Link Email
   public async sendPasswordResetLink(to: string, resetLink: string) {
-    const html = getPasswordResetHtmlMessage("Password Reset", resetLink);
+    const html = getPasswordResetHtmlMessage("Reset Password", resetLink);
     await this.sendMail({ to, subject: "Reset Password", htmlOrText: html });
   }
-  // New Password Email
-  public async sendNewPassword(to: string, password: string, link: string) {
-    const html = getNewPasswordHtmlMessage("New Password", password, link);
-    await this.sendMail({ to, subject: "New Password", htmlOrText: html });
+  // Password Reset Link Email
+  public async sendForgotPasswordLink(to: string, link: string) {
+    const html = getForgotPasswordHtmlMessage("Set New Password", link);
+    await this.sendMail({ to, subject: "Set New Password", htmlOrText: html });
   }
 }
 

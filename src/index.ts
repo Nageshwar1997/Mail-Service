@@ -5,6 +5,7 @@ import { transporter } from "./service";
 import { verifyConnectionController } from "./controllers/verifyConnection";
 import { sendOtpController } from "./controllers/sendOtp";
 import { sendPasswordResetLinkController } from "./controllers/sendPasswordResetLink";
+import { sendForgotPasswordLinkController } from "./controllers/sendForgotPasswordLink";
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,7 @@ app.get("/", (_req, res) => {
 app.get("/verify-connection", verifyConnectionController);
 app.post("/send-otp", sendOtpController);
 app.post("/send-password-reset-link", sendPasswordResetLinkController);
+app.post("/send-forgot-password-link", sendForgotPasswordLinkController);
 
 (async () => {
   if (IS_DEV) {
